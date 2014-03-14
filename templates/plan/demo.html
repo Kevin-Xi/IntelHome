@@ -3,6 +3,41 @@
         <title>Demo</title>
     </head>
     <body>
-        <p>Hello, {{ string }}</p>
+        <p>Hello, {{ string }}!</p>
+        <p>Temperature is <font size="7">{{ temp }} ℃</font>.</p>
+        {% if alert %}
+            <table bgcolor="red">
+        {% else %}
+            <table bgcolor="green">
+        {% endif %}
+                <tr>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+            </table>
+            
+            <span id="totalSecond">1</span>
+		    <script language="javascript" type="text/javascript">
+			var second=document.getElementById('totalSecond').textContent;
+
+			if (navigator.appName.indexOf("Explorer")>-1){
+				second=document.getElementById('totalSecond').innerText;
+			} else {
+				second=document.getElementById('totalSecond').textContent;
+			}
+
+			setInterval("redirect()", 1000);
+
+			function redirect(){
+				if (second<1){
+					location.href="/plan/";
+				} else {
+					if (navigator.appName.indexOf("Explorer")>-1){
+						document.getElementById('totalSecond').innerText=second--;
+					} else {
+						document.getElementById('totalSecond').textContent=second--;
+					}
+				}
+			}
+        </script>
     </body>
 </html>
